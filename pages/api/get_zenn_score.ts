@@ -39,6 +39,10 @@ const getZennScore = async (
 
   const svgBase = new SvgBase();
   const svg = svgBase.render(`
+    <clipPath id="clipCircle">
+      <circle r="35" cx="35" cy="35" />
+    </clipPath>
+    <image href="${user.avatar_small_url}" height="70" width="70" clip-path="url(#clipCircle)" />
     <text x="0" y="10" font-family="Verdana" font-size="10">${user.username}</text>
     <text x="0" y="25" font-family="Verdana" font-size="10">${user.articles_count}</text>
     <text x="0" y="35" font-family="Verdana" font-size="10">${user.total_liked_count}</text>
