@@ -23,7 +23,7 @@ export class Card extends SvgComponent {
             in="SourceGraphic"
             result="ChangeAlpha"
             type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .3 0"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
           />
           <feGaussianBlur in="ChangeAlpha" stdDeviation="2" result="GaussianBlur"/>
           <feMerge>
@@ -38,9 +38,7 @@ export class Card extends SvgComponent {
         rx="10"
         width="${width}"
         height="${height}"
-        stroke="#ddd"
         fill="white"
-        stroke-width="2"
       />
     `
   }
