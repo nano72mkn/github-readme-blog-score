@@ -27,7 +27,6 @@ export class Svg {
   render() {
     const inner = this.SvgComponents.map((SvgComponent: SvgComponent) => {
       SvgComponent.SvgBase = this.SvgBase;
-      console.log(SvgComponent)
       return SvgComponent.render();
     }).join('');
     return this.SvgBase.render(inner);

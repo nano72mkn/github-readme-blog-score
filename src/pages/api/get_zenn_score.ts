@@ -38,7 +38,6 @@ const getZennScore = async (
   }
 
   const { user }: { user: ZennUserData } = await data.json();
-  console.log(user);
 
   const width = 200;
   const height = 250;
@@ -54,8 +53,6 @@ const getZennScore = async (
       new Text({ x: 30, y: 80, fontWeight: 'bold', text: user.total_liked_count.toString() }),
     ]
   ).render();
-
-  console.log(svg)
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "image/svg+xml");
