@@ -19,17 +19,7 @@ export class Card extends SvgComponent {
         filterUnits="userSpaceOnUse"
         color-interpolation-filters="sRGB"
       >
-          <feColorMatrix
-            in="SourceGraphic"
-            result="ChangeAlpha"
-            type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
-          />
-          <feGaussianBlur in="ChangeAlpha" stdDeviation="2" result="GaussianBlur"/>
-          <feMerge>
-            <feMergeNode in="offsetBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
+          <feDropShadow in="SourceGraphic" flood-color="#000000" stdDeviation="3" dx="2" dy="2" flood-opacity="0.2"/>
       </filter>
       <rect
         filter="url(#card_shadow)"
