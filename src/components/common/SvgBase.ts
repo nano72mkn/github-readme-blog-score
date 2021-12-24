@@ -3,8 +3,8 @@ export class SvgBase {
   height: number;
 
   constructor(
-    width = 100,
-    height = 100
+    width:number = 100,
+    height:number = 100
   ) {
     this.width = width;
     this.height = height;

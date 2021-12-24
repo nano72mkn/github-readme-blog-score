@@ -1,6 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { SvgBase } from '../../src/common/svgBase';
+import { Card } from '../../components/Card';
+import { Svg, Text } from '../../components/common';
+import { ZennIcon } from '../../components/Icon/ZennIcon';
 
 type QueryType = {
   zennId?: string;
@@ -36,17 +38,24 @@ const getZennScore = async (
   }
 
   const { user }: { user: ZennUserData } = await data.json();
+  console.log(user);
 
-  const svgBase = new SvgBase();
-  const svg = svgBase.render(`
-    <clipPath id="clipCircle">
-      <circle r="35" cx="35" cy="35" />
-    </clipPath>
-    <image href="${user.avatar_small_url}" height="70" width="70" clip-path="url(#clipCircle)" />
-    <text x="0" y="10" font-family="Verdana" font-size="10">${user.username}</text>
-    <text x="0" y="25" font-family="Verdana" font-size="10">${user.articles_count}</text>
-    <text x="0" y="35" font-family="Verdana" font-size="10">${user.total_liked_count}</text>
-  `);
+  const width = 200;
+  const height = 250;
+
+  const svg = new Svg(
+    width,
+    height,
+    [
+      new Card(),
+      new ZennIcon({ x: 0, y: height - 50, height: 20 }),
+      new Text({ x: 30, y: 40, fontWeight: 'bold', text: user.username }),
+      new Text({ x: 30, y: 60, fontWeight: 'bold', text: user.articles_count.toString() }),
+      new Text({ x: 30, y: 80, fontWeight: 'bold', text: user.total_liked_count.toString() }),
+    ]
+  ).render();
+
+  console.log(svg)
 
   res.statusCode = 200;
   res.setHeader("Content-Type", "image/svg+xml");
