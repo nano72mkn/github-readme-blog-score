@@ -42,15 +42,23 @@ const getZennScore = async (
   const width = 200;
   const height = 250;
 
+  const articlesCount = user.articles_count.toLocaleString();
+  const booksCount = user.books_count.toLocaleString();
+  const totalLikedCount = user.total_liked_count.toLocaleString();
+
   const svg = new Svg(
     width,
     height,
     [
       new Card(),
-      new ZennIcon({ x: 0, y: height - 50, height: 20 }),
-      new Text({ x: 30, y: 40, fontWeight: 'bold', text: user.username }),
-      new Text({ x: 30, y: 60, fontWeight: 'bold', text: user.articles_count.toString() }),
-      new Text({ x: 30, y: 80, fontWeight: 'bold', text: user.total_liked_count.toString() }),
+      new ZennIcon({ x: -5, y: height - 50, height: 20 }),
+      new Text({ x: 30,  y: 45,  fontWeight: 'bold', text: user.username }),
+      new Text({ x: 30,  y: 90,  fontWeight: 'bold', fontSize: 24, text: articlesCount }),
+      new Text({ x: 40 + (articlesCount.length * 14), y: 90, fontSize: 14, text: "記事" }),
+      new Text({ x: 30,  y: 125,  fontWeight: 'bold', fontSize: 24, text: booksCount }),
+      new Text({ x: 40 + (booksCount.length * 14), y: 125,  fontSize: 14, text: "冊の本" }),
+      new Text({ x: 30,  y: 160, fontWeight: 'bold', fontSize: 24, text: totalLikedCount }),
+      new Text({ x: 40 + (totalLikedCount.length * 14), y: 160, fontSize: 14, text: "Liked" }),
     ]
   ).render();
 

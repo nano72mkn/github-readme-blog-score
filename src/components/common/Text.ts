@@ -5,16 +5,22 @@ type TextData = {
   y: number;
   fontSize?: number;
   fontWeight?: "normal" | "bold";
+  textAnchor?: "start" | "middle" | "end";
   text: string;
 }
 
 export class Text extends SvgComponent {
-  data: TextData = {x: 0, y: 0, fontSize: 16, fontWeight: "normal", text: '-'};
+  data: TextData;
 
   constructor(data: TextData) {
     super();
 
-    this.data = data;
+    this.data = {
+      fontSize: 16,
+      fontWeight: "normal",
+      textAnchor: "start",
+      ...data,
+    };
   }
 
   render() {
@@ -25,6 +31,7 @@ export class Text extends SvgComponent {
         font-family="Super Sans"
         font-size="${this.data.fontSize}"
         font-weight="${this.data.fontWeight}"
+        text-anchor="${this.data.textAnchor}"
       >
         ${this.data.text}
       </text>
