@@ -66,7 +66,7 @@ const getZennScore = async (
   res.setHeader("Content-Type", "image/svg+xml");
   res.setHeader(
     "Cache-Control",
-    "public, max-age=31536000"
+    "no-cache"
   );
   return res.send(svg);
 }
